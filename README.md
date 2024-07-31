@@ -2,11 +2,19 @@
 
 An application that generates a logo in SVG format based on user input. The application prompts the user to select a color, choose a shape, and provide text for the logo, then saves the generated SVG to a .svg file.
 
-## Installation
+## Features
+
+Some of the features for this app are:
+- Shape options
+- Color customization
+- Text addition
+- SVG Output 
+
+## Installation and Prerequisites 
 
 In order to install this application you will need to ensure you have node.js installed. 
 
-# Usage
+## Usage
 
 1. Run the script: 
     node index.js
@@ -24,6 +32,9 @@ In order to install this application you will need to ensure you have node.js in
 This project is licensed under MIT License. For more information please click on the badge below: 
 
  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+ MIT License 
+© 2024 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
 
 ## Resources
 
