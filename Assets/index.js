@@ -27,39 +27,45 @@ function generateSVG(color, shape, text) {
 }
 
 // Prompt the user for input
-inquirer.prompt([
-    {
-        type: 'input',
-        name: 'color',
-        message: 'Enter the color for the logo (e.g., red, #ff0000):',
-        default: 'blue'
-    },
-    {
-        type: 'list',
-        name: 'shape',
-        message: 'Choose a shape for the logo:',
-        choices: ['circle', 'square', 'triangle'],
-        default: 'circle'
-    },
-    {
-        type: 'input',
-        name: 'text',
-        message: 'Enter the text for the logo:',
-        default: 'Logo'
+async function main() {
+    try {
+        const answers = await inquirer.prompt([
+            {
+                type: 'input',
+                name: 'color',
+                message: 'Enter the color for the logo (e.g., red, #ff0000):',
+                default: 'blue'
+            },
+            {
+                type: 'list',
+                name: 'shape',
+                message: 'Choose a shape for the logo:',
+                choices: ['circle', 'square', 'triangle'],
+                default: 'circle'
+            },
+            {
+                type: 'input',
+                name: 'text',
+                message: 'Enter the text for the logo:',
+                default: 'Logo'
+            }
+        ]);
+
+        const { color, shape, text } = answers;
+        const svgContent = generateSVG(color, shape, text);
+
+        fs.writeFile('logo.svg', svgContent, (err) => {
+            if (err) {
+                console.error('Error writing SVG file:', err);
+            } else {
+                console.log('SVG logo generated and saved as logo.svg');
+            }
+        });
+    } catch (error) {
+        console.error('Error:', error);
     }
-])
-.then(answers => {
-    const { color, shape, text } = answers;
-    const svgContent = generateSVG(color, shape, text);
-    
-    fs.writeFile('logo.svg', svgContent, (err) => {
-        if (err) {
-            console.error('Error writing SVG file:', err);
-        } else {
-            console.log('SVG logo generated and saved as logo.svg');
-        }
-    });
-})
-.catch(error => {
-    console.error('Error:', error);
-});
+}
+
+main();
+
+
